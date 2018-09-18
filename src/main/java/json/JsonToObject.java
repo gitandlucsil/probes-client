@@ -19,5 +19,8 @@ public class JsonToObject {
             Gson gson = new Gson();
             Probe probes = gson.fromJson(json, Probe.class);
             System.out.println(json);
+            System.out.println("Valores do json: ");
+            System.out.println(probes);
+             System.out.println("t1: "+probes.getTemperature1()+", t2: "+probes.getTemperature2()+", h1: "+probes.getHumidity1()+", h2: "+probes.getHumidity2());
     }
 }

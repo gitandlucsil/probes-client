@@ -6,11 +6,6 @@
 package serial;
 
 import com.fazecast.jSerialComm.SerialPort;
-import com.fazecast.jSerialComm.SerialPortDataListener;
-import com.fazecast.jSerialComm.SerialPortEvent;
-import java.io.UnsupportedEncodingException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -25,8 +20,7 @@ public class SerialComm {
         comPort.addDataListener(listener);
         try{
             Thread.sleep(1000);
-        }catch(Exception e){
-            e.printStackTrace();
+        }catch(InterruptedException e){
         }
         /*comPort.removeDataListener();
         comPort.closePort();*/

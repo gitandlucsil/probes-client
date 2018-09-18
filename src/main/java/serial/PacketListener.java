@@ -28,14 +28,14 @@ public final class PacketListener implements SerialPortPacketListener
    {
       byte[] newData = event.getReceivedData();
       System.out.println("Received data of size: " + newData.length);
-      String json_from_probes = null;
+      String json_from_probes = "";
       for (int i = 0; i < newData.length; ++i){
          //System.out.print((char)newData[i]);
          json_from_probes += (char)newData[i];
       }
        //System.out.println(json_from_probes);
       //System.out.println("\n");
-      if(json_from_probes != null){
+      if(json_from_probes != ""){
         JsonToObject jobj = new JsonToObject(json_from_probes); 
       }
    }
