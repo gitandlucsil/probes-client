@@ -5,15 +5,33 @@
  */
 package models;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author andre
  */
-public class Probe {
+@Entity
+@Table(name="probe")
+public class Probe implements Serializable{
     
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "temp_1", nullable = false)
     private int temp_1;
+    @Column(name = "temp_2", nullable = false)
     private int temp_2;
+    @Column(name = "hum_1", nullable = false)
     private int hum_1;
+    @Column(name = "hum_2", nullable = false)
     private int hum_2;
 
     public Probe() {
@@ -49,6 +67,14 @@ public class Probe {
 
     public void setHumidity2(int humidity2) {
         this.hum_2 = humidity2;
+    }
+
+    public int getTemp_1() {
+        return temp_1;
+    }
+
+    public void setTemp_1(int temp_1) {
+        this.temp_1 = temp_1;
     }
     
 }

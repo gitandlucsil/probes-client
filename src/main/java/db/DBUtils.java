@@ -15,8 +15,8 @@ import models.Probe;
  *
  * @author andre
  */
-public class DBUtils {
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProbesTU");
+public class DBUtils{
+    private static EntityManagerFactory emf = null;
     private static EntityManager em = null;
     private static EntityTransaction tx = null;
     
@@ -24,24 +24,28 @@ public class DBUtils {
         return emf;
     }
     
-    public EntityManager getEntityManager(){
+    public static EntityManager getEntityManager(){
         return em;
     }
     
-    public EntityTransaction getEntityTransaction(){
+    public static EntityTransaction getEntityTransaction(){
         return tx;
     }
     
-    public void newEntityManager(){
+    public static void newEntityManagerFactory(String name){
+        emf = Persistence.createEntityManagerFactory(name);
+    }
+    
+    public static void newEntityManager(){
         em = emf.createEntityManager();
     }
     
-    public void beginNewTransaction(){
+    public static void beginNewTransaction(){
         tx = em.getTransaction();
         tx.begin();
     }
     
-    public void doPersistProbes(Probe probe){
+    public static void doPersistProbes(Probe probe){
         em.persist(probe);
         tx.commit();
     }
@@ -50,7 +54,7 @@ public class DBUtils {
         emf.close();
     }
     
-    public void shutdownEntityManager() {
+    public static void shutdownEntityManager() {
         em.close();
     }
 }
