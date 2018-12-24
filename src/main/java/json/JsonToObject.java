@@ -25,12 +25,12 @@ public class JsonToObject {
             System.out.println(probes);
             System.out.println("t1: "+probes.getTemperature1()+", t2: "+probes.getTemperature2()+", h1: "+probes.getHumidity1()+", h2: "+probes.getHumidity2());
             System.out.println("Salvando no banco! ");
-            DBUtils.newEntityManagerFactory("ProbesTU");
+            /*DBUtils.newEntityManagerFactory("ProbesTU");
             DBUtils.newEntityManager();
             DBUtils.beginNewTransaction();
             DBUtils.doPersistProbes(probes);
             DBUtils.shutdownEntityManager();
-            DBUtils.shutdownEntityManagerFactory();
+            DBUtils.shutdownEntityManagerFactory();*/
             System.out.println("------------------------------------------------");
             
     }
