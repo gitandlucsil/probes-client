@@ -25,11 +25,23 @@ public class ProbesValues implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Column(name = "id_value", nullable = false)
+    private int id_value;
     @Column(name = "read_value", nullable = false)
     private int read_value;
 
     public ProbesValues() {
     }
+
+    public int getId_value() {
+        return id_value;
+    }
+
+    public void setId_value(int id_value) {
+        this.id_value = id_value;
+    }
+    
+    
 
     public Long getId() {
         return id;

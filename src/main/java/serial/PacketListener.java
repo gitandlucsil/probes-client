@@ -20,7 +20,7 @@ public final class PacketListener implements SerialPortPacketListener
    @Override
    public int getPacketSize()
    {
-       return 81;
+       return 125;
    }
 
    @Override
@@ -38,7 +38,7 @@ public final class PacketListener implements SerialPortPacketListener
       if(!"".equals(json_from_probes)){ //Se a mensagem não estiver vazia
           if(json_from_probes.charAt(0) == '[' && json_from_probes.charAt(getPacketSize()-1) == ']'){//Se começar e terminar com sinalizacao de vetor []
               if(json_from_probes.charAt(1) == '{' && json_from_probes.charAt(getPacketSize()-2) == '}'){
-                          //JsonToObject jobj = new JsonToObject(json_from_probes); 
+                JsonToObject jobj = new JsonToObject(json_from_probes); 
               }
           }
       }
