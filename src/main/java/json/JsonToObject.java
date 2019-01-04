@@ -16,12 +16,11 @@ import models.ProbesValues;
 public class JsonToObject {
 
     public JsonToObject(String json) {
-            System.out.println("------------------------------------------------");
-            System.out.println("Vai criar o JSON!");
+            //System.out.println("------------------------------------------------");
+            //System.out.println("Vai criar o JSON!");
             Gson gson = new Gson();
             ProbesValues[] probes_values = gson.fromJson(json,ProbesValues[].class);
-            System.out.println(json);
-            System.out.println("Valores do json: ");
+            /*System.out.println("Valores do json: ");
             System.out.println(probes_values[0].getId_value());
             System.out.println(probes_values[0].getRead_value());
             System.out.println(probes_values[1].getId_value());
@@ -29,16 +28,17 @@ public class JsonToObject {
             System.out.println(probes_values[2].getId_value());
             System.out.println(probes_values[2].getRead_value());
             System.out.println(probes_values[3].getId_value());
-            System.out.println(probes_values[3].getRead_value());
-            //System.out.println("t1: "+probes.getTemperature1()+", t2: "+probes.getTemperature2()+", h1: "+probes.getHumidity1()+", h2: "+probes.getHumidity2());
-            System.out.println("Salvando no banco! ");
-            /*DBUtils.newEntityManagerFactory("ProbesTU");
+            System.out.println(probes_values[3].getRead_value());*/
+            //System.out.println("Salvando no banco! ");
+            DBUtils.newEntityManagerFactory("ProbesValues");
             DBUtils.newEntityManager();
-            DBUtils.beginNewTransaction();
-            DBUtils.doPersistProbes(probes);
+            for (ProbesValues p : probes_values){ 
+                DBUtils.beginNewTransaction();
+                DBUtils.doPersistProbes(p);
+            }
             DBUtils.shutdownEntityManager();
-            DBUtils.shutdownEntityManagerFactory();*/
-            System.out.println("------------------------------------------------");
+            DBUtils.shutdownEntityManagerFactory();
+            //System.out.println("------------------------------------------------");
             
     }
 }

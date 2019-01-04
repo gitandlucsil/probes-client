@@ -21,6 +21,7 @@ import javax.persistence.Table;
 @Table(name="probes_idf")
 public class ProbesIdf implements Serializable {
     
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")

@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import models.Probe;
+import models.ProbesValues;
 
 /**
  *
@@ -45,7 +45,7 @@ public class DBUtils{
         tx.begin();
     }
     
-    public static void doPersistProbes(Probe probe){
+    public static void doPersistProbes(ProbesValues probe){
         em.persist(probe);
         tx.commit();
     }
@@ -57,4 +57,6 @@ public class DBUtils{
     public static void shutdownEntityManager() {
         em.close();
     }
+    
 }
+

@@ -21,6 +21,7 @@ import javax.persistence.Table;
 @Table(name="probes_values")
 public class ProbesValues implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
@@ -40,16 +41,6 @@ public class ProbesValues implements Serializable {
     public void setId_value(int id_value) {
         this.id_value = id_value;
     }
-    
-    
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public int getRead_value() {
         return read_value;
@@ -59,15 +50,14 @@ public class ProbesValues implements Serializable {
         this.read_value = read_value;
     }
 
-    private Long ID;
-
-    public Long getID() {
-        return ID;
+    public Long getId() {
+        return id;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Long id) {
+        this.id = id;
     }
+
     
 
 }
