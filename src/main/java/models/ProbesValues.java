@@ -24,7 +24,7 @@ public class ProbesValues implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
     @Column(name = "id_value", nullable = false)
     private int id_value;
