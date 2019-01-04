@@ -1,5 +1,6 @@
 package models;
 
+import br.edu.utfpr.models.ProbesValues;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
