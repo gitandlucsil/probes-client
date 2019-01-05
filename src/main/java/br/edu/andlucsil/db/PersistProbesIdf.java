@@ -19,7 +19,7 @@ public class PersistProbesIdf {
         DBUtils.newEntityManager();
         for (ProbesIdf p : probes_idfs) {
             DBUtils.beginNewTransaction();
-            DBUtils.doPersistProbesIdfs(p);
+            DBUtils.doMergeProbesIdfs(p);
         }
         DBUtils.shutdownEntityManager();
         DBUtils.shutdownEntityManagerFactory();
