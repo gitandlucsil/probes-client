@@ -14,6 +14,6 @@ import br.edu.andlucsil.serial.SerialComm;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Incializado!");
-        //SerialComm serialComm = new SerialComm();
+        SerialComm serialComm = new SerialComm();
     }
 }

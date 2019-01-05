@@ -6,13 +6,11 @@
 package br.edu.andlucsil.serial;
 
 import com.fazecast.jSerialComm.SerialPort;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author andre
  */
-@Component
 public class SerialComm {
 
     public SerialComm() {
