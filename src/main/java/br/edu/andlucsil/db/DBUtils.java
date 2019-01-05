@@ -5,6 +5,7 @@
  */
 package br.edu.andlucsil.db;
 
+import br.edu.andlucsil.models.ProbesIdf;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -45,7 +46,12 @@ public class DBUtils{
         tx.begin();
     }
     
-    public static void doPersistProbes(ProbesValues probe){
+    public static void doPersistProbesValues(ProbesValues probe){
+        em.persist(probe);
+        tx.commit();
+    }
+    
+    public static void doPersistProbesIdfs(ProbesIdf probe){
         em.persist(probe);
         tx.commit();
     }

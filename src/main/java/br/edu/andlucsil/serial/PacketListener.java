@@ -1,14 +1,22 @@
 package br.edu.andlucsil.serial;
 
+import br.edu.andlucsil.db.PersistProbesIdf;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortEvent;
 import com.fazecast.jSerialComm.SerialPortPacketListener;
-import br.edu.andlucsil.json.JsonToObject;
+import br.edu.andlucsil.json.ProbesValuesJsonToObj;
+import br.edu.andlucsil.models.ProbesIdf;
 
 public final class PacketListener implements SerialPortPacketListener
 {
 
     public PacketListener() {
+        ProbesIdf[] p_idf = new ProbesIdf[4];
+        p_idf[0] = new ProbesIdf(1,"T1");
+        p_idf[1] = new ProbesIdf(2,"U1");
+        p_idf[2] = new ProbesIdf(3,"T2");
+        p_idf[3] = new ProbesIdf(4,"U2");
+        PersistProbesIdf p_p_idf = new PersistProbesIdf(p_idf);
     }
     
    @Override
@@ -38,7 +46,7 @@ public final class PacketListener implements SerialPortPacketListener
       if(!"".equals(json_from_probes)){ //Se a mensagem não estiver vazia
           if(json_from_probes.charAt(0) == '[' && json_from_probes.charAt(getPacketSize()-1) == ']'){//Se começar e terminar com sinalizacao de vetor []
               if(json_from_probes.charAt(1) == '{' && json_from_probes.charAt(getPacketSize()-2) == '}'){
-                JsonToObject jobj = new JsonToObject(json_from_probes); 
+                ProbesValuesJsonToObj jobj = new ProbesValuesJsonToObj(json_from_probes); 
               }
           }
       }

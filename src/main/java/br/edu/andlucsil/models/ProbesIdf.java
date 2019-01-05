@@ -34,6 +34,13 @@ public class ProbesIdf implements Serializable {
     public ProbesIdf() {
     }
 
+    public ProbesIdf(int id_value, String description) {
+        this.id_value = id_value;
+        this.description = description;
+    }
+    
+    
+
     public Long getId() {
         return id;
     }
