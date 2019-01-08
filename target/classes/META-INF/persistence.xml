@@ -16,7 +16,7 @@
       <property name="hibernate.default_schema" value="public"/>
       <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

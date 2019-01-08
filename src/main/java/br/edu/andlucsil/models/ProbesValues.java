@@ -6,16 +6,17 @@
 package br.edu.andlucsil.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,8 +34,11 @@ public class ProbesValues implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
-    @Column(name = "id_value", nullable = false)
-    private int id_value;
+    //@Column(name = "id_value", nullable = false)
+    //private int id_value;
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "probesidf")
+    private ProbesIdf probesidf;
     @Column(name = "read_value", nullable = false)
     private int read_value;
     @Column(name = "date", nullable = false)
@@ -49,14 +53,13 @@ public class ProbesValues implements Serializable {
         this.read_time = new Date(System.currentTimeMillis());
     }
 
-    public int getId_value() {
+    /*public int getId_value() {
         return id_value;
     }
 
     public void setId_value(int id_value) {
         this.id_value = id_value;
-    }
-
+    }*/
     public int getRead_value() {
         return read_value;
     }
@@ -89,8 +92,15 @@ public class ProbesValues implements Serializable {
         this.read_time = read_time;
     }
 
+    public ProbesIdf getProbesidf() {
+        return probesidf;
+    }
+
+    public void setProbesidf(ProbesIdf probesidf) {
+        this.probesidf = probesidf;
+    }
 
 
-    
+
     
 }

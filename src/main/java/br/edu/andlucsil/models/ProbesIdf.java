@@ -7,13 +7,16 @@ package br.edu.andlucsil.models;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,15 +25,18 @@ import javax.persistence.Table;
  * @author andre
  */
 @Entity
-@Table(name="probes_idf")
+@Table(name = "probes_idf")
 public class ProbesIdf implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     private int id_value;
     @Column(name = "description", nullable = false)
     private String description;
-    
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name = "probesidf")
+    private List<ProbesValues> probesvalues;
+
     public ProbesIdf() {
     }
 
@@ -38,7 +44,7 @@ public class ProbesIdf implements Serializable {
         this.id_value = id_value;
         this.description = description;
     }
-    
+
     public int getId_value() {
         return id_value;
     }
@@ -54,6 +60,14 @@ public class ProbesIdf implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
+    public List<ProbesValues> getProbesvalues() {
+        return probesvalues;
+    }
+
+    public void setProbesvalues(List<ProbesValues> probesvalues) {
+        this.probesvalues = probesvalues;
+    }
+
     
 }

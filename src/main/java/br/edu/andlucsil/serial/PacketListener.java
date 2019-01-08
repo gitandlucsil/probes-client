@@ -11,12 +11,6 @@ public final class PacketListener implements SerialPortPacketListener
 {
 
     public PacketListener() {
-        ProbesIdf[] p_idf = new ProbesIdf[4];
-        p_idf[0] = new ProbesIdf(1,"T1");
-        p_idf[1] = new ProbesIdf(2,"U1");
-        p_idf[2] = new ProbesIdf(3,"T2");
-        p_idf[3] = new ProbesIdf(4,"U2");
-        PersistProbesIdf p_p_idf = new PersistProbesIdf(p_idf);
     }
     
    @Override
@@ -28,7 +22,7 @@ public final class PacketListener implements SerialPortPacketListener
    @Override
    public int getPacketSize()
    {
-       return 125;
+       return 257;
    }
 
    @Override
