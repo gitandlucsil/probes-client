@@ -33,8 +33,8 @@ public class ProbesIdf implements Serializable {
     private int id_value;
     @Column(name = "description", nullable = false)
     private String description;
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name = "probesidf")
+    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "probesidf")
+    //@JoinColumn(name = "probesidf")
     private List<ProbesValues> probesvalues;
 
     public ProbesIdf() {

@@ -21,7 +21,7 @@ public class PersistProbesValues {
         DBUtils.newEntityManager();
         for (ProbesValues p : probes_values) {
             DBUtils.beginNewTransaction();
-            DBUtils.doPersistProbesValues(p);
+            DBUtils.doMergeProbesValues(p);
         }
         DBUtils.shutdownEntityManager();
         DBUtils.shutdownEntityManagerFactory();

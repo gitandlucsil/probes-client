@@ -61,6 +61,11 @@ public class DBUtils{
         tx.commit();
     }
     
+    public static void doMergeProbesValues(ProbesValues probe){
+        em.merge(probe);
+        tx.commit();
+    }
+        
     public static void shutdownEntityManagerFactory() {
         emf.close();
     }

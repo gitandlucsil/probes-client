@@ -7,6 +7,7 @@ package br.edu.andlucsil.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,7 +37,7 @@ public class ProbesValues implements Serializable {
     private Long id;
     //@Column(name = "id_value", nullable = false)
     //private int id_value;
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "probesidf")
     private ProbesIdf probesidf;
     @Column(name = "read_value", nullable = false)
@@ -100,6 +101,49 @@ public class ProbesValues implements Serializable {
         this.probesidf = probesidf;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.probesidf);
+        hash = 59 * hash + this.read_value;
+        hash = 59 * hash + Objects.hashCode(this.read_date);
+        hash = 59 * hash + Objects.hashCode(this.read_time);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProbesValues other = (ProbesValues) obj;
+        if (this.read_value != other.read_value) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.probesidf, other.probesidf)) {
+            return false;
+        }
+        if (!Objects.equals(this.read_date, other.read_date)) {
+            return false;
+        }
+        if (!Objects.equals(this.read_time, other.read_time)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
 
 
     
