@@ -4,6 +4,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>br.edu.andlucsil.models.ProbesIdf</class>
     <class>br.edu.andlucsil.models.ProbesValues</class>
+    <class>br.edu.andlucsil.models.Alarms</class>
+    <class>br.edu.andlucsil.models.AlarmRegister</class>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/tcc_pos"/>

@@ -6,17 +6,11 @@
 package br.edu.andlucsil.models;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,8 +28,9 @@ public class ProbesIdf implements Serializable {
     @Column(name = "description", nullable = false)
     private String description;
     @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "probesidf")
-    //@JoinColumn(name = "probesidf")
     private List<ProbesValues> probesvalues;
+    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "probesidf")
+    private List<Alarms> alarms;
 
     public ProbesIdf() {
     }
@@ -69,5 +64,12 @@ public class ProbesIdf implements Serializable {
         this.probesvalues = probesvalues;
     }
 
-    
+	public List<Alarms> getAlarms() {
+		return alarms;
+	}
+
+	public void setAlarms(List<Alarms> alarms) {
+		this.alarms = alarms;
+	}
+	
 }
