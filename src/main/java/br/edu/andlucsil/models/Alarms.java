@@ -25,6 +25,8 @@ public class Alarms implements Serializable{
     private Long id;
     @Column(name = "description", nullable = false)
     private String description;
+    @Column (name = "value", nullable = false)
+    private int value;
     @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "alarm")
     private List<AlarmRegister> alarm;
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -43,6 +45,13 @@ public class Alarms implements Serializable{
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+        
+        public int getValue() {
+		return value;
+	}
+	public void setValue(int value) {
+		this.value = value;
 	}
 
 	public List<AlarmRegister> getAlarm() {
