@@ -1,11 +1,10 @@
 package br.edu.andlucsil.serial;
 
-import br.edu.andlucsil.db.PersistProbesIdf;
+
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortEvent;
 import com.fazecast.jSerialComm.SerialPortPacketListener;
-import br.edu.andlucsil.json.ProbesValuesJsonToObj;
-import br.edu.andlucsil.models.ProbesIdf;
+import br.edu.andlucsil.json.ProbesJsonToObj;
 
 public final class PacketListener implements SerialPortPacketListener
 {
@@ -40,7 +39,7 @@ public final class PacketListener implements SerialPortPacketListener
       if(!"".equals(json_from_probes)){ //Se a mensagem não estiver vazia
           if(json_from_probes.charAt(0) == '[' && json_from_probes.charAt(getPacketSize()-1) == ']'){//Se começar e terminar com sinalizacao de vetor []
               if(json_from_probes.charAt(1) == '{' && json_from_probes.charAt(getPacketSize()-2) == '}'){
-                ProbesValuesJsonToObj jobj = new ProbesValuesJsonToObj(json_from_probes); 
+                ProbesJsonToObj jobj = new ProbesJsonToObj(json_from_probes); 
               }
           }
       }
