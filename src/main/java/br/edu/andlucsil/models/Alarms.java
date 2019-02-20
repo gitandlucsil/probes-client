@@ -34,6 +34,10 @@ public class Alarms implements Serializable{
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "probesidf")
     private ProbesIdf probesidf;
+
+    public Alarms() {
+    }
+    
     
     
 	public Long getId() {

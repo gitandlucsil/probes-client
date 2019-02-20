@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
  */
 public class DAO<T> {
 
-	private final Class<T> modelClass;
+	private Class<T> modelClass;
 
 	public DAO(Class<T> modelClass) {
 		this.modelClass = modelClass;

@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,9 +26,18 @@ public class AlarmRegister implements Serializable{
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "alarm")
     private Alarms alarm;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "probes_values_id")
     private ProbesValues probesvalues;
+
+    public AlarmRegister(){
+        
+    }
+    
+    public AlarmRegister(Alarms alarm, ProbesValues probesvalues) {
+        this.alarm = alarm;
+        this.probesvalues = probesvalues;
+    }
     
 	public Long getId() {
 		return id;
