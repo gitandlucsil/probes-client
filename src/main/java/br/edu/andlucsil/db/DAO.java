@@ -7,15 +7,18 @@ package br.edu.andlucsil.db;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.FlushModeType;
 import javax.persistence.criteria.CriteriaQuery;
+import org.hibernate.FlushMode;
 
 /**
  *
  * @author andre
+ * @param <T>
  */
 public class DAO<T> {
 
-	private Class<T> modelClass;
+	private final Class<T> modelClass;
 
 	public DAO(Class<T> modelClass) {
 		this.modelClass = modelClass;
@@ -25,6 +28,7 @@ public class DAO<T> {
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
 		try {
+                        em.setFlushMode(FlushModeType.COMMIT);
 			em.remove(em.merge(t));
 			em.getTransaction().commit();
 		} catch (Exception ex) {
@@ -36,6 +40,7 @@ public class DAO<T> {
 	
 	public List<T> findAll() {
 		EntityManager em = new JPAUtil().getEntityManager();
+                em.getEntityManagerFactory().getCache().evictAll();
 		List<T> lista = null;
 		try {
 			CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(modelClass);
@@ -49,7 +54,8 @@ public class DAO<T> {
 
 	public T findById(Integer id) {
 		EntityManager em = new JPAUtil().getEntityManager();
-		T instancia = null;
+		em.getEntityManagerFactory().getCache().evictAll();
+                T instancia = null;
 		try {
 			instancia = em.find(modelClass, id);
 		} finally {
@@ -62,6 +68,7 @@ public class DAO<T> {
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
 		try {
+                        //em.setFlushMode(FlushModeType.COMMIT);
 			em.persist(t);
 			em.getTransaction().commit();
 		} catch (Exception ex) {
@@ -75,6 +82,7 @@ public class DAO<T> {
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
 		try {
+                        //em.setFlushMode(FlushModeType.COMMIT);
 			em.merge(t);
 			em.getTransaction().commit();
 		} catch (Exception ex) {

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "alarm_register")
-public class AlarmRegister implements Serializable{
+public class AlarmRegister implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -26,36 +26,41 @@ public class AlarmRegister implements Serializable{
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "alarm")
     private Alarms alarm;
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "probes_values_id")
     private ProbesValues probesvalues;
 
-    public AlarmRegister(){
-        
+    public AlarmRegister() {
+
     }
-    
+
     public AlarmRegister(Alarms alarm, ProbesValues probesvalues) {
         this.alarm = alarm;
         this.probesvalues = probesvalues;
     }
-    
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public Alarms getAlarm() {
-		return alarm;
-	}
-	public void setAlarm(Alarms alarm) {
-		this.alarm = alarm;
-	}
-	public ProbesValues getProbesvalues() {
-		return probesvalues;
-	}
-	public void setProbesvalues(ProbesValues probesvalues) {
-		this.probesvalues = probesvalues;
-	}
-	
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Alarms getAlarm() {
+        return alarm;
+    }
+
+    public void setAlarm(Alarms alarm) {
+        this.alarm = alarm;
+    }
+
+    public ProbesValues getProbesvalues() {
+        return probesvalues;
+    }
+
+    public void setProbesvalues(ProbesValues probesvalues) {
+        this.probesvalues = probesvalues;
+    }
+
 }

@@ -16,8 +16,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "alarms")
-public class Alarms implements Serializable{
-	
+public class Alarms implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,60 +25,62 @@ public class Alarms implements Serializable{
     private Long id;
     @Column(name = "description", nullable = false)
     private String description;
-    @Column (name = "value", nullable = false)
+    @Column(name = "value", nullable = false)
     private int value;
-    @Column (name = "type", nullable = false)
-    private boolean type; 
-    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "alarm")
+    @Column(name = "type", nullable = false)
+    private boolean type;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "alarm")
     private List<AlarmRegister> alarm;
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "probesidf")
     private ProbesIdf probesidf;
 
-    public Alarms() {
+    public Long getId() {
+        return id;
     }
-    
-    
-    
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-        
-        public int getValue() {
-		return value;
-	}
-	public void setValue(int value) {
-		this.value = value;
-	}
 
-        public boolean isType() {
-		return type;
-	}
-	public void setType(boolean type) {
-		this.type = type;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-        
-	public List<AlarmRegister> getAlarm() {
-		return alarm;
-	}
-	public void setAlarm(List<AlarmRegister> alarm) {
-		this.alarm = alarm;
-	}
-	public ProbesIdf getProbesidf() {
-		return probesidf;
-	}
-	public void setProbesidf(ProbesIdf probesidf) {
-		this.probesidf = probesidf;
-	}
-    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public boolean isType() {
+        return type;
+    }
+
+    public void setType(boolean type) {
+        this.type = type;
+    }
+
+    public List<AlarmRegister> getAlarm() {
+        return alarm;
+    }
+
+    public void setAlarm(List<AlarmRegister> alarm) {
+        this.alarm = alarm;
+    }
+
+    public ProbesIdf getProbesidf() {
+        return probesidf;
+    }
+
+    public void setProbesidf(ProbesIdf probesidf) {
+        this.probesidf = probesidf;
+    }
+
 }
