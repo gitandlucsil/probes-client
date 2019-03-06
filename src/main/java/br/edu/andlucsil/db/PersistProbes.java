@@ -35,20 +35,30 @@ public class PersistProbes {
             /*Percorre a lista de alarmes*/
             alarms.stream().filter((a) -> (p.getProbesidf().getDescription().equals(a.getProbesidf().getDescription()))).forEachOrdered((a) -> {
                 System.out.println(a.getProbesidf().getDescription()+" - "+a.getDescription()+" - "+a.getValue());
-                if(a.isType()){
+                if(a.isType()){ //Se for marcado para ser um alarme de valor maior
                     if(p.getRead_value() >= a.getValue()){
                         AlarmRegister ar = new AlarmRegister(a,p);
+                        a.setActive(true);
+                        alarmsDao.update(a);
                         alarmregiserDAO.update(ar);
                         System.out.println("É maior!");
                         System.out.println(p.getProbesidf().getDescription()+": "+p.getRead_value()+","+a.getValue()); 
+                    } else{
+                        a.setActive(false);
+                        alarmsDao.update(a);
                     }
-                }else{
+                }else{ //Se for marcado para ser um alarme de valor menor
                     if(p.getRead_value() <= a.getValue()){
                         alarmregiserDAO = new DAO<>(AlarmRegister.class);
                         AlarmRegister ar = new AlarmRegister(a,p);
+                        a.setActive(true);
+                        alarmsDao.update(a);
                         alarmregiserDAO.update(ar);
                         System.out.println("É menor!");
                         System.out.println(p.getProbesidf().getDescription()+": "+p.getRead_value()+","+a.getValue());
+                    }else{
+                        a.setActive(false);
+                        alarmsDao.update(a);
                     }
                 }
             });

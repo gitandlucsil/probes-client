@@ -29,6 +29,8 @@ public class Alarms implements Serializable {
     private int value;
     @Column(name = "type", nullable = false)
     private boolean type;
+    @Column(name = "active", nullable = false)
+    private boolean active;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "alarm")
     private List<AlarmRegister> alarm;
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -65,6 +67,14 @@ public class Alarms implements Serializable {
 
     public void setType(boolean type) {
         this.type = type;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public List<AlarmRegister> getAlarm() {
