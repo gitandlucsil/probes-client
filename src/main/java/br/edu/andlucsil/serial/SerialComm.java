@@ -8,14 +8,13 @@ package br.edu.andlucsil.serial;
 import com.fazecast.jSerialComm.SerialPort;
 
 /**
- *
- * @author andre
+ * @author André Lucas Silva
  */
 public class SerialComm {
 
     public SerialComm() {
-        SerialPort comPort = SerialPort.getCommPorts()[0];
-        comPort.openPort();
+        SerialPort comPort = SerialPort.getCommPorts()[0];/*Recebe a primeira porta serial disponível*/
+        comPort.openPort();                               /*Abre a conexão com a porta*/
         PacketListener listener = new PacketListener();
         comPort.addDataListener(listener);
         System.out.println("Porta aberta!");
