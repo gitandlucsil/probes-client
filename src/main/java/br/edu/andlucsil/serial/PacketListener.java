@@ -5,6 +5,9 @@ import br.edu.andlucsil.json.JsonToObj;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortEvent;
 import com.fazecast.jSerialComm.SerialPortPacketListener;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public final class PacketListener implements SerialPortPacketListener
 {
@@ -44,12 +47,16 @@ public final class PacketListener implements SerialPortPacketListener
          //System.out.print((char)newData[i]);
          json_from_probes += (char)newData[i];
       }
-      System.out.println(json_from_probes);
-      System.out.println("\n");
+      //System.out.println(json_from_probes);
+      //System.out.println("\n");
       if(!"".equals(json_from_probes)){ //Se a mensagem não estiver vazia
           if(json_from_probes.charAt(0) == '[' && json_from_probes.charAt(getPacketSize()-1) == ']'){//Se começar e terminar com sinalizacao de vetor []
               if(json_from_probes.charAt(1) == '{' && json_from_probes.charAt(getPacketSize()-2) == '}'){
-                JsonToObj jobj = new JsonToObj(json_from_probes); 
+                  try { 
+                      JsonToObj jobj = new JsonToObj(json_from_probes);
+                  } catch (MalformedURLException ex) {
+                      Logger.getLogger(PacketListener.class.getName()).log(Level.SEVERE, null, ex);
+                  }
               }
           }
       }

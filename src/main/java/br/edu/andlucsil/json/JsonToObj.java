@@ -8,6 +8,7 @@ package br.edu.andlucsil.json;
 import br.edu.andlucsil.model.Probe;
 import br.edu.andlucsil.web.SendRequest;
 import com.google.gson.Gson;
+import java.net.MalformedURLException;
 
 /**
  *
@@ -15,7 +16,7 @@ import com.google.gson.Gson;
  */
 public class JsonToObj {
 
-    public JsonToObj(String json) {
+    public JsonToObj(String json) throws MalformedURLException {
         Gson gson = new Gson();
         Probe[] probes = gson.fromJson(json,Probe[].class);
         for(Probe p : probes){

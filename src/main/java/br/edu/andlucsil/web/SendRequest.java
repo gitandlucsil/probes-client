@@ -6,6 +6,10 @@
 package br.edu.andlucsil.web;
 
 import br.edu.andlucsil.model.Probe;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+//import com.sun.jesey.Client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,6 +27,21 @@ public class SendRequest {
 
     public SendRequest(Probe probe) throws MalformedURLException {
         try {
+            String request_url = "http://localhost:8080/probedesc/" + probe.getId() + "/probevalue";
+            String payload = "{\"read_value\":" + probe.getRead_value() + "}";
+            Client client = Client.create();
+            WebResource webResource = client.resource(request_url);
+            ClientResponse response = webResource.type("application/json").post(ClientResponse.class, payload);
+            if (response.getStatus() != 200) {
+                throw new RuntimeException("HTTP erro : " + response.getStatus());
+            }
+            /*System.out.println("Saida do servidor: .... \n");
+            String output = response.getEntity(String.class);
+            System.out.println(output);*/
+        } catch (RuntimeException e) {
+        }
+        /*Sem o Jersey*/
+        /*try {
             String request_url = "http://localhost:8080/probedesc/" + probe.getId() + "/probevalue";
             String payload = "{\"read_value\":" + probe.getRead_value() + "}";
             //System.out.println(request_url);
@@ -48,7 +67,6 @@ public class SendRequest {
             System.out.println(jsonString.toString());
         } catch (IOException ex) {
             Logger.getLogger(SendRequest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        }*/
     }
 }
