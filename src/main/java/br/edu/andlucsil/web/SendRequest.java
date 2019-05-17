@@ -32,6 +32,7 @@ public class SendRequest {
             Client client = Client.create();
             WebResource webResource = client.resource(request_url);
             ClientResponse response = webResource.type("application/json").post(ClientResponse.class, payload);
+            System.out.println("Enviado!");
             if (response.getStatus() != 200) {
                 throw new RuntimeException("HTTP erro : " + response.getStatus());
             }

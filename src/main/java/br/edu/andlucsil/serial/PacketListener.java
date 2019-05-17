@@ -53,7 +53,7 @@ public final class PacketListener implements SerialPortPacketListener
           if(json_from_probes.charAt(0) == '[' && json_from_probes.charAt(getPacketSize()-1) == ']'){//Se começar e terminar com sinalizacao de vetor []
               if(json_from_probes.charAt(1) == '{' && json_from_probes.charAt(getPacketSize()-2) == '}'){
                   try { 
-                      JsonToObj jobj = new JsonToObj(json_from_probes);
+                      new JsonToObj(json_from_probes);
                   } catch (MalformedURLException ex) {
                       Logger.getLogger(PacketListener.class.getName()).log(Level.SEVERE, null, ex);
                   }

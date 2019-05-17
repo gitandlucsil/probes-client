@@ -20,8 +20,8 @@ public class JsonToObj {
         Gson gson = new Gson();
         Probe[] probes = gson.fromJson(json,Probe[].class);
         for(Probe p : probes){
-            //System.out.println(p.getId() + " - " + p.getRead_value());
-            SendRequest request = new SendRequest(p);
+            System.out.println(p.getId() + " - " + p.getRead_value());
+            new SendRequest(p);
         }
     }
     
