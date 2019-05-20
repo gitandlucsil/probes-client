@@ -27,7 +27,7 @@ public class SendRequest {
 
     public SendRequest(Probe probe) throws MalformedURLException {
         try {
-            String request_url = "http://localhost:8080/probedesc/" + probe.getId() + "/probevalue";
+            String request_url = "http://localhost:8080/probe/" + probe.getId() + "/value";
             String payload = "{\"read_value\":" + probe.getRead_value() + "}";
             Client client = Client.create();
             WebResource webResource = client.resource(request_url);
